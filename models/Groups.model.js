@@ -4,15 +4,12 @@ const groupSchema = new Schema(
   {
     leader: {
       type: String,
-      required: true,
     },
     eaters: {
-      type: [String],
-      required: true,
+      type:  [String],
     },
     restaurant: {
-      type: String,
-      required: true,
+      type:String,
     },
   },
   {

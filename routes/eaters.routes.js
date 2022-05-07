@@ -6,10 +6,10 @@ router.post("/create", (req, res) => {
   const { name, email } = req.body
 
   Eater
-    .create( {name, email})
-    .then(() => res.status(201))
-    .catch((err) => res.status(500).json(err));
-});
+  .create( {name, email})
+  .then(() => res.json('201'))
+  .catch((err) => res.status(500).json(err));
+})
 
 router.get('/getAll',(req,res)=>{
 
