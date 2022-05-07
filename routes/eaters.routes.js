@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Eater = require("./../models/Eaters.model");
+const Restaurant= require('./../models/Restaurants.model')
 
 router.post("/create", (req, res) => {
   const { name, email } = req.body
@@ -23,6 +24,7 @@ router.post('/delete',(req,res)=>{
 
   Eater
   .remove()
+  .then(()=>Restaurant.remove())
   .then(()=>res.json({message: "eaters and restaurants removed"}))
   .catch((err) => res.status(500).json(err));
 
