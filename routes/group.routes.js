@@ -46,7 +46,7 @@ router.post("/create_groups", (req, res) => {
              .create({eaters: eaters.slice(0 + i * sizegroup,sizegroup + i * sizegroup),
               leader: eaters.slice(0 + i * sizegroup, sizegroup + i * sizegroup)
               [Math.floor(Math.random() * sizegroup)],
-              restaurant: restaurant[0],
+              restaurant: restaurant[Math.floor(Math.random() * restaurant.length)],
             }).then((response) => console.log(response));
           }
         });
