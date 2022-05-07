@@ -19,5 +19,14 @@ router.get('/getAll',(req,res)=>{
 
 })
 
+router.post('/delete',(req,res)=>{
+
+  Eater
+  .remove()
+  .then(()=>res.json({message: "eaters and restaurants removed"}))
+  .catch((err) => res.status(500).json(err));
+
+})
+
 
 module.exports = router
