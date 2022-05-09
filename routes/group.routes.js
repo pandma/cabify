@@ -25,42 +25,23 @@ router.post("/create_groups", (req, res) => {
           let nGroups
           let groupSize
           let maxSize = 7
-
-          // if (eaters.length <= maxSize) {
-          //   nGroups = 1
-          //   groupSize = maxSize;
-          // } else if (eaters.length % maxSize === 0) {
-          //   nGroups = eaters.length / maxSize
-          //   groupSize = maxSize
-          // } else if (eaters.length % (maxSize-1) === 0) {
-          //   groupSize = maxSize-1
-          //   nGroups = eaters.length / (maxSize-1)
-          // } else if (eaters.length % (maxSize-2) === 0) {
-          //   nGroups = eaters.length / (maxSize-2)
-          //   groupSize = maxSize-2
-          // } else if (eaters.length % (maxSize-3) === 0) {
-          //   nGroups = eaters.length / (maxSize-3)
-          //   groupSize = maxSize-3
-          // } else {
-          //   nGroups = eaters.length / Math.floor(Math.random()*6)
+          // prime numbers
+          // const isPrime = num => {
+          //   for (let i = 2, s = Math.sqrt(num); i <= s; i++)
+          //     if (num % i === 0) return false
+          //   return num > 1
+          // }
+          // if (isPrime(eaters.length)) {
+          //   while (!nGroups) {
+          //     if ((eaters.length % maxSize) <= (Math.floor(eaters.length / maxSize))) {
+          //       nGroups = Math.floor(eaters.length / maxSize)
+          //       groupSize = maxSize
+          //       groupSize2 = groupSize + 1
+          //     } else { maxSize = maxSize - 1 }
+          //   }
           // }
 
-          //   maxSize = 6
-          //  while (!nGroups){
-          //    if ((eaters.length % maxSize) <= (Math.floor(eaters.length /maxSize)) ) {
-          //     nGroups = Math.floor(eaters.length / maxSize)
-          //      groupSize =maxSize
-          //   }if(eaters.length>=7){
-          //       maxSize=7
-          //       groupSize = maxSize
-          //   }else{ 
-          //     maxSize = maxSize -1
-          //     groupSize = maxSize
-          //    } 
-          //  }
-
           while (!nGroups) {
-
             if (eaters.length % maxSize === 0) {
               nGroups = eaters.length / maxSize
               groupSize = maxSize

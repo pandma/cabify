@@ -26,7 +26,7 @@ to make the job even easier i have created an order model and an order CRUD so t
 Rigth now I am relly busy with the final proyect at IronHack and i would have added more ideas. i have enjoyed this Challenge very much,
  I hope you take me into consideration, thank you.
  Best Regards, 
- Pablo:)
+ Pablo :)
 
 
 
