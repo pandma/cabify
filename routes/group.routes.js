@@ -6,6 +6,7 @@ const Group = require("./../models/Groups.model");
 router.post("/create_groups", (req, res) => {
   let eaters = []
   let restaurant = []
+  let clone = eaters.splice()
 
   Array.prototype.move = function (from, to) {
     this.splice(to, 0, this.splice(from, 1)[0]);
@@ -24,23 +25,24 @@ router.post("/create_groups", (req, res) => {
 
           let nGroups
           let groupSize
+          let remain
           let maxSize = 7
           // prime numbers
-          // const isPrime = num => {
-          //   for (let i = 2, s = Math.sqrt(num); i <= s; i++)
-          //     if (num % i === 0) return false
-          //   return num > 1
-          // }
-          // if (isPrime(eaters.length)) {
-          //   while (!nGroups) {
-          //     if ((eaters.length % maxSize) <= (Math.floor(eaters.length / maxSize))) {
-          //       nGroups = Math.floor(eaters.length / maxSize)
-          //       groupSize = maxSize
-          //       groupSize2 = groupSize + 1
-          //     } else { maxSize = maxSize - 1 }
-          //   }
-          // }
-
+          const isPrime = num => {
+            for (let i = 2, s = Math.sqrt(num); i <= s; i++)
+              if (num % i === 0) return false
+            return num > 1
+          }
+          if (isPrime(eaters.length)) {
+            while (!nGroups) {
+              if ((eaters.length % maxSize) <= (Math.floor(eaters.length / maxSize))) {
+                nGroups = Math.floor(eaters.length / maxSize)
+                groupSize = maxSize
+                remain = eaters.length - (nGroups * groupSize)
+                // groupSize2 = groupSize + 1
+              } else { maxSize = maxSize - 1 }
+            }
+          }
           while (!nGroups) {
             if (eaters.length % maxSize === 0) {
               nGroups = eaters.length / maxSize
@@ -51,10 +53,13 @@ router.post("/create_groups", (req, res) => {
             for (let j = 1; j < eaters.length; j++) {
               eaters.move(0, j)
             }
+            // for (remain; remain > 0; remain--) {
+            // while (remain > 0) {
 
+            // for (remain; remain > 0; remain--) {
             Group
               .create({
-                eaters: eaters.slice(0 + i * groupSize, groupSize + i * groupSize),
+                eaters: eaters.slice(0 + i * groupSize, remain ? (groupSize + i * groupSize) + 1 : (groupSize + i * groupSize)),
                 leader: eaters.slice(0 + i * groupSize, groupSize + i * groupSize)
                 [Math.floor(Math.random() * groupSize)],
                 restaurant: restaurant[Math.floor(Math.random() * restaurant.length)],
