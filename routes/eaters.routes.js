@@ -7,7 +7,7 @@ router.post("/create", (req, res) => {
 
   Eater
     .create({ name, email })
-    .then(() => res.status(201))
+    .then((response) => res.json(response))
     .catch((err) => res.status(500).json(err))
 })
 
