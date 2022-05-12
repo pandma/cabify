@@ -10,7 +10,7 @@
 |  POST  | /restaurant/create |  Create restaurants form  | 
 |  GET  | /restaurant/getAll |  Showa all the restaurants  | 
 |  POST  | /groups/create_groups |  Create the groups form  | 
-|  GET  | /groups/groups |  Shows all the groups  | 
+|  GET  | /groups/getAll |  Shows all the groups  | 
 |  GET  | /groups/leaders/:leader_Id |  Shows all the eaters that have been leaders  |
 |  POST  | /order/create_order |  create an order form |
 |  GET  | /order/getAll | Shows all the orders |

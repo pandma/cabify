@@ -10,7 +10,6 @@ router.post("/create_groups", (req, res) => {
   let eaters = []
   let restaurant = []
 
-
   Eaters
     .find()
     .then((response) => {
@@ -33,30 +32,27 @@ router.post("/create_groups", (req, res) => {
           if (remain !== 0 && groupSize == 7) {
             groupSize--
             nGroups = false
-
           }
         } else { groupSize = groupSize - 1 }
       }
 
-      let grup = []
+      let group = []
       let groupsArr = []
       shuffle(eaters)
 
       for (let i = 0; i < nGroups; i++) {
-        let grup = eaters.slice(0 + (i * groupSize), groupSize + (i * groupSize))
+        let group = eaters.slice(0 + (i * groupSize), groupSize + (i * groupSize))
 
         if (remain !== 0) {
           grup.push(eaters[eaters.length - remain])
           remain--
-
         }
         let oneLeader = eaters.slice(0 + i * groupSize, groupSize + i * groupSize)
 
         const newGroup = {
-          eaters: grup, leader: oneLeader[Math.floor(Math.random() * groupSize)],
+          eaters: group, leader: oneLeader[Math.floor(Math.random() * groupSize)],
           restaurant: restaurant[Math.floor(Math.random() * restaurant.length)]
         }
-
         groupsArr.push(newGroup)
       }
       Group.create(groupsArr)
@@ -67,7 +63,7 @@ router.post("/create_groups", (req, res) => {
 })
 
 
-router.get("/groups", (req, res) => {
+router.get("/getAll", (req, res) => {
 
   Group
     .find()

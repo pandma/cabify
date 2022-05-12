@@ -3,7 +3,7 @@ const chai = require('chai');
 const assert = chai.assert;
 
 const { getRandom } = require('../routes/index.routes');
-const { isPrime, shuffle } = require("./../utils/isPrime");
+const { isPrime, shuffle } = require("../utils/isPrime");
 
 
 describe('Unit Test', () => {
