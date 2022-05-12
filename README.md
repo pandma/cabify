@@ -20,13 +20,13 @@
 
 DESCRIPTION 
 
-While doing this exercise I had the harder time doing the create_groups endpoint, I am not sure if the groups con only be created ones or each time there is request it creates new groups, so i diceded to do it that way, evry time there is a requst it a creates even groups with random peaple from the eaters in data base, I used a while loop that looks for the maxximum amount of people that can be in each groups by looking for the minimun rest that its left from dividing the total amout of people by 7 and if the rest isn,t 0 it rest 1 to the amout of people in each group so now its te total divided by 6, it is doing this until it finds the maximun amout of people in each group. My logic works but it doesn,t fully work if the amout of eaters is a prime numbers, in the line 48 from group.routes there is the logic I thougth about for prime number but it wasn,t working correctly so I decide to don,t implement it.
-I have decided to add new funcionalities to help, the eaters can edit ther profieles in case they forget their email acount and also eliminate eaters only. And becouse there is always people complaining becaiuse the are leaders every time you can check the leaders in the "/groups/leaders/:leader_Id" endpoint.
-to make the job even easier i have created an order model and an order CRUD so the leader can make the reservacion faster by cheking it.
-Rigth now I am relly busy with the final proyect at IronHack and i would have added more ideas. i have enjoyed this Challenge very much,
- I hope you take me into consideration, thank you.
- Best Regards, 
- Pablo :)
+While doing this exercise I had the harder time doing the create_groups endpoint, I am not sure if the groups can only be created ones or each time there is request it creates new groups, so I decided to do it that way, every time there is a request it a creates even groups with random people from the eaters in database, I used a while loop that looks for the maximum amount of people that can be in each groups by looking for the minimum rest that's left from dividing the total amount of people by 7 and if the rest isn,t 0 it rest 1 to the amount of people in each group so now it's the total divided by 6, it is doing this until it finds the maximum amount of people in each group. I also had many troubles with prime numbers since they can only be divided by themselves and one, so every time there was a prime number in the amount of eaters it would create a lot of groups of one person, but after many tries I think I got it right.
+I decided to add new functionalities to help resolve the issue, the eaters can edit their profiles in case they forget their email account and also eliminate eaters only. And because there are always people complaining because there are leaders every time you can check the leaders in the "/groups/leaders/:leader_Id" endpoint.
+To make the job even easier I have created an order model and an order CRUD so the leader can make the reservacion faster by checking it.
+Right now I am really busy with the final project at IronHack and I would have added more ideas. I have enjoyed this Challenge very much,
+I hope you take me into consideration, thank you.
+Best Regards,
+Pablo :)
 
 
 
