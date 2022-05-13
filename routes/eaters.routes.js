@@ -2,20 +2,20 @@ const router = require("express").Router()
 const Eater = require("./../models/Eaters.model")
 const Restaurant = require('./../models/Restaurants.model')
 
-router.post("/create", (req, res) => {
+router.post("/eaters", (req, res) => {
   const { name, email } = req.body
 
   Eater
     .create({ name, email })
-    .then((response) => res.json(response))
+    .then((response) => res.status(201).json(response))
     .catch((err) => res.status(500).json(err))
 })
 
-router.get('/getAll', (req, res) => {
+router.get('/eaters', (req, res) => {
 
   Eater
     .find()
-    .then((response) => res.json(response))
+    .then((response) => res.status(201).json(response))
     .catch((err) => res.status(500).json(err))
 
 })

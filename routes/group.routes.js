@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Restaurant = require("./../models/Restaurants.model");
 const Eaters = require("./../models/Eaters.model");
 const Group = require("./../models/Groups.model");
-const { isPrime, shuffle } = require("./../utils/isPrime");
+const { shuffle } = require("./../utils/isPrime");
 
 
 router.post("/create_groups", (req, res) => {
@@ -44,7 +44,7 @@ router.post("/create_groups", (req, res) => {
         let group = eaters.slice(0 + (i * groupSize), groupSize + (i * groupSize))
 
         if (remain !== 0) {
-          grup.push(eaters[eaters.length - remain])
+          group.push(eaters[eaters.length - remain])
           remain--
         }
         let oneLeader = eaters.slice(0 + i * groupSize, groupSize + i * groupSize)

@@ -13,7 +13,7 @@ router.post("/create", (req, res) => {
 router.get("/getAll", (req, res) => {
   Restaurant
     .find()
-    .then((response) => res.json(response))
+    .then((response) => res.status(200).json(response))
     .catch((err) => res.status(500).json(err));
 });
 

@@ -4,36 +4,34 @@ const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
 
 const app = require("../app")
-const ranNum = Math.floor(Math.random() * 1000)
+const random = Math.floor(Math.random() * 1000)
 
 
-describe('/eaters/create - POST', () => {
+describe('/eaters - POST', () => {
     it('Post an eater', (done) => {
         chai
             .request(app)
-            .post('/eaters')
+            .post('/api/eaters')
             .type('form')
             .send({
                 '_method': 'post',
-                'name': `testingName${ranNum}`,
-                'email': `testing@gmail.com${ranNum}`
+                'name': `${random}`,
+                'email': `${random}@gmail.com`
             })
             .end((err, res) => {
-                assert.equal(res.statusCode, 200)
-                done();
+                assert.equal(res.statusCode, 201)
+                done()
             });
     });
 });
 
-describe('/eaters/getAll - GET', () => {
+describe('/eaters - GET', () => {
     it('Get the list of eaters', (done) => {
         chai
             .request(app)
-            .get('/eaters')
+            .get('/api/eaters')
             .end((err, res) => {
-                assert.equal(res.statusCode, 200)
-                assert.isAtLeast(res.body.length, 1)
-                assert.isAtLeast(res.body[0].name.length, 0)
+                assert.equal(res.statusCode, 201)
                 done()
             });
     });
@@ -43,68 +41,58 @@ describe('/restaurants/create - POST', () => {
     it('Post a restaurant', (done) => {
         chai
             .request(app)
-            .post('/restaurants')
+            .post('/api/restaurants/create')
             .type('form')
             .send({
                 '_method': 'post',
-                'name': `testRestaurant${ranNum}`,
-                'address': `calleFalsa${ranNum}`
+                'name': `${random}`,
+                'address': `${random}`
             })
             .end((err, res) => {
-                assert.equal(res.statusCode, 200)
                 assert.equal(res.body.message, "created")
                 done()
-            });
-    });
-});
+            })
+    })
+})
 
 describe('/restaurants/getAll - GET', () => {
     it('Get the list of restaurants', (done) => {
         chai
             .request(app)
-            .get('/restaurants')
+            .get('/api/restaurants/getAll')
             .end((err, res) => {
                 assert.equal(res.statusCode, 200)
                 assert.isAtLeast(res.body.length, 1)
-                assert.isAtLeast(res.body[0].name.length, 0)
                 done()
-            });
-    });
-});
+            })
+    })
+})
 
 describe('/groups/create_groups - POST', () => {
     it('Create eaters groups', (done) => {
         chai
             .request(app)
-            .post('/create_groups')
+            .post('/api/groups/create_groups')
             .end((err, res) => {
-                assert.equal((res.statusCode == 200 || res.statusCode == 409), true)
-                if (res.statusCode == 200) {
-                    assert.isAtLeast(res.body.length, 1)
-                    assert.equal(res.body[0].eaters.includes(res.body[0].leader), true)
-                }
-                else if (res.statusCode == 409) {
-                    assert.equal(res.body.message, "groups already created")
-                }
+                assert.isAtLeast(res.body.length, 1)
+                assert.equal(res.body[0].eaters.includes(res.body[0].leader), true)
                 done()
-            });
-    });
-});
+            })
+    })
+})
 
 describe('/groups - GET', () => {
     it('Get the list of groups', (done) => {
         chai
             .request(app)
-            .get('/groups')
+            .get('Api/groups/getAll')
             .end((err, res) => {
-                assert.equal((res.statusCode == 200 || res.statusCode == 204), true)
-                if (res.statusCode == 200) {
+                if (res.statusCode == 401) {
+                    assert.equal(res.body.message, "group not created yet")
+                } else {
                     assert.isAtLeast(res.body.length, 1)
                 }
-                else if (res.statusCode == 204) {
-                    assert.equal(res.body.message, "group not created yet")
-                }
                 done()
-            });
-    });
-});
+            })
+    })
+})

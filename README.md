@@ -2,11 +2,11 @@
 
 |  Method  | URL | Description  | 
 |  ----------  | ---------- | ------------  | 
-|  POST  | /eaters/create  |  Create eaters form  | 
-|  GET  | /eaters/getAll  |  Shows all the users  | 
-|  POST  | /eaters/edit/eater_Id  |  Edit user form  | 
-|  POST  | /eaters/eater_Id/  |  Eliminate one eaters  | 
-|  POST  | /eaters/delete |  Delete all users and restaurants  | 
+|  POST  | /eaters  |  Create eaters form  | 
+|  GET  | /eaters  |  Shows all the users  | 
+|  POST  | /edit/eater_Id  |  Edit user form  | 
+|  POST  | /eater_Id  |  Eliminate one eaters  | 
+|  POST  | /delete |  Delete all users and restaurants  | 
 |  POST  | /restaurant/create |  Create restaurants form  | 
 |  GET  | /restaurant/getAll |  Showa all the restaurants  | 
 |  POST  | /groups/create_groups |  Create the groups form  | 
